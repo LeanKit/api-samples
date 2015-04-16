@@ -1,0 +1,18 @@
+{
+  "name": "node-search",
+  "version": "0.0.1",
+  "description": "Search API using LeanKit Node.js client",
+  "main": "search.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "David Neal",
+  "license": "MIT",
+  "dependencies": {
+    "csv-stringify": "0.0.6",
+    "leankit-client": "^0.5.1",
+    "lodash": "^3.7.0",
+    "when": "^3.7.2",
+    "yargs": "^3.7.2"
+  }
+}
