@@ -1,9 +1,9 @@
-# Node Search
+# LeanKit search with Node.js
 
-This sample uses the LeanKit Client for Node.js to search for cards on a given board, with the option to export those cards in CSV or JSON format.
+This sample uses the [LeanKit Client for Node.js](https://github.com/LeanKit/leankit-node-client) to search for cards on a given board, with the option to export those cards in CSV or JSON format.
 
 ```
-Usage: search.js -h "hostname" -u "email" -p "password" -b ["name" or 1234] [options]
+Usage: node search.js -h "accountname" -u "email" -p "password" -b ["name" or 1234] [options]
 
 Options:
   -h, --host      Host name (e.g. mycompany)                [string]  [required]
@@ -18,4 +18,20 @@ Options:
   --comments      Search comments                                      [boolean]
   --tags          Search tags                                          [boolean]
   -?, --help      Show help
+```
+
+## Running the Node.js search sample
+
+* Install [Node.js](https://nodejs.org/)
+* Download or clone this repository
+* Open a command/terminal window and install the required dependencies
+
+```
+npm install
+```
+
+* Execute a search using Node.js
+
+```
+node search.js -h "mycompany" -u "me@mycompany.com" -p "mypassword" -b "my board name" --backlog > backlog.csv
 ```
