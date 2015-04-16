@@ -43,13 +43,10 @@ var searchOptions = {
 
 getBoardId( options.b )
 	.then( function( boardId ) {
-		return boardId;
-	}, function( err ) {
-			console.error( "Error getting board by name:", err );
-		} )
-	.then( function( boardId ) {
 		return getCardsBySearch( boardId, searchOptions );
-	} )
+	}, function( err ) {
+			console.error( "Error getting board by id or name:", err );
+		} )
 	.then( function( cards ) {
 		if ( options.json ) {
 			console.log( JSON.stringify( cards ) );
