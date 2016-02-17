@@ -15,21 +15,22 @@ var options = require( "yargs" )
 	.option( "old", { describe: "Search old archive (> 14 days)", type: "boolean" } )
 	.option( "comments", { describe: "Search comments", type: "boolean" } )
 	.option( "tags", { describe: "Search tags", type: "boolean" } )
-	.option( "csv", { alias: "csv", describe: "CSV output", "type": "boolean" } )
-	.option( "json", { alias: "json", describe: "JSON output", "type": "boolean" } )
+	.option( "csv", { alias: "csv", describe: "CSV output", type: "boolean" } )
+	.option( "json", { alias: "json", describe: "JSON output", type: "boolean" } )
 	.help( "?" )
 	.alias( "?", "help" )
 	.epilog( "Copyright 2015 LeanKit" )
 	.argv;
 
-
-if ( !options.backlog && !options.board && !options.archive && !options.old )
+if ( !options.backlog && !options.board && !options.archive && !options.old ) {
 	options.board = true;
+}
 
-if ( !options.csv && !options.json )
+if ( !options.csv && !options.json ) {
 	options.csv = true;
+}
 
-var client = LeanKitClient.createClient( options.host, options.user, options.password );
+var client = new LeanKitClient( options.host, options.user, options.password );
 
 var searchOptions = {
 	SearchTerm: options.search || "",
@@ -52,7 +53,9 @@ getBoardId( options.b )
 			console.log( JSON.stringify( cards ) );
 		} else {
 			stringify( cards, { header: true }, function( err, csvOutput ) {
-				if ( err ) console.error( "err:", err );
+				if ( err ) {
+					console.error( "err:", err );
+				}
 				console.log( csvOutput );
 			} );
 		}
@@ -60,10 +63,9 @@ getBoardId( options.b )
 			console.error( "Error searching cards:", err );
 		} );
 
-
 function getBoardId( idOrName ) {
 	return when.promise( function( resolve, reject ) {
-		if ( typeof (idOrName) === "number" ) {
+		if ( typeof ( idOrName ) === "number" ) {
 			resolve( idOrName );
 		} else {
 			client.getBoards( function( err, boards ) {
@@ -72,9 +74,10 @@ function getBoardId( idOrName ) {
 				}
 
 				var board = null;
-				for (var i = 0; i < boards.length; i++) {
-					if ( boards[ i ].Title === idOrName )
+				for ( var i = 0; i < boards.length; i++ ) {
+					if ( boards[ i ].Title === idOrName ) {
 						board = boards[ i ];
+					}
 				}
 				if ( board ) {
 					resolve( board.Id );
@@ -97,7 +100,9 @@ function getCardsBySearch( boardId, searchOptions ) {
 		var recurse = _.throttle( function( boardId, searchOptions ) {
 			counter++;
 			client.searchCards( boardId, searchOptions, function( err, res ) {
-				if ( err ) return done( err );
+				if ( err ) {
+					return done( err );
+				}
 				if ( res && res.Results && res.Results.length > 0 ) {
 					cards.push.apply( cards, res.Results );
 
@@ -121,6 +126,5 @@ function getCardsBySearch( boardId, searchOptions ) {
 		}
 
 		recurse( boardId, searchOptions );
-
 	} );
 }

@@ -1,6 +1,6 @@
 {
   "name": "node-search",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Search API using LeanKit Node.js client",
   "main": "search.js",
   "scripts": {
@@ -9,10 +9,10 @@
   "author": "David Neal",
   "license": "MIT",
   "dependencies": {
-    "csv-stringify": "0.0.6",
-    "leankit-client": "^0.5.1",
-    "lodash": "^3.7.0",
-    "when": "^3.7.2",
-    "yargs": "^3.7.2"
+    "csv-stringify": "^1.0.2",
+    "leankit-client": "^1.1.0",
+    "lodash": "^4.5.0",
+    "when": "^3.7.7",
+    "yargs": "^4.1.0"
   }
 }
