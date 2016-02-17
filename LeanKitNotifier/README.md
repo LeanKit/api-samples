@@ -1,4 +1,4 @@
-**LeanKit Notifier** is a sample application that demonstrates using the stateful event subscription **LeanKitClient** [library for .NET](https://github.com/LeanKit/LeanKit.API.Client) for responding to events raised whenever a LeanKit board changes. This Windows application runs in the tray area and pops up messages whenever cards are updated.
+**LeanKit Notifier** is a sample application that demonstrates using the stateful event subscription **LeanKitClient** library for responding to events raised whenever a LeanKit board changes. This Windows application runs in the tray area and pops up messages whenever cards are updated.
 
 To use this application, open the ```app.config``` and update the LeanKit connection settings.
 
